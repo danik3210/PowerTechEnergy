@@ -1,0 +1,48 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ringOuter" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F3F4F6"/>
+      <stop offset="45%" stop-color="#9CA3AF"/>
+      <stop offset="100%" stop-color="#4B5563"/>
+    </linearGradient>
+
+    <linearGradient id="ringInner" x1="16" y1="14" x2="48" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#9CA3AF" stop-opacity="0.75"/>
+    </linearGradient>
+
+    <linearGradient id="boltGrad" x1="22" y1="10" x2="42" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFD56A"/>
+      <stop offset="45%" stop-color="#FF9F1C"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.8" flood-color="#F59E0B" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- outer ring -->
+  <circle cx="32" cy="32" r="24" stroke="url(#ringOuter)" stroke-width="5" opacity="0.95"/>
+
+  <!-- inner ring -->
+  <circle cx="32" cy="32" r="19.5" stroke="url(#ringInner)" stroke-width="1.8" opacity="0.9"/>
+
+  <!-- cut accents to imitate segmented metallic ring -->
+  <path d="M47.5 13.8C50.7 16.2 53.1 19.5 54.3 23.4" stroke="#F3F4F6" stroke-width="2.2" stroke-linecap="round" opacity="0.9"/>
+  <path d="M10.2 40.8C11.3 45 13.8 48.8 17.4 51.6" stroke="#6B7280" stroke-width="2.2" stroke-linecap="round" opacity="0.75"/>
+
+  <!-- lightning -->
+  <path
+    d="M33.2 9.8L22.8 31.1H31.2L27.6 54.2L43 29.3H34.7L40.5 9.8H33.2Z"
+    fill="url(#boltGrad)"
+    filter="url(#softGlow)"
+  />
+
+  <!-- subtle highlight on bolt -->
+  <path
+    d="M33.2 9.8L22.8 31.1H27.4L38.2 12.2L33.2 9.8Z"
+    fill="white"
+    opacity="0.18"
+  />
+</svg>
