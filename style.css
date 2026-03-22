@@ -734,7 +734,6 @@ textarea {
   .hero-visual {
     min-height: 420px;
   }
-}
 
 @media (max-width: 720px) {
   .container {
@@ -787,10 +786,14 @@ textarea {
   .nav a {
     font-size: 0.92rem;
   }
+}
+
+/* temporary cleanup for old small labels */
 .eyebrow,
 .kicker {
   display: none !important;
 }
+
 /* ===== TECHNOLOGIES PAGE ===== */
 
 .tech-grid {
