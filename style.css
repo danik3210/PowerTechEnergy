@@ -791,7 +791,10 @@ textarea {
 .kicker {
   display: none !important;
 }
+/* ===== TECHNOLOGIES PAGE ===== */
+
 .tech-grid {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
@@ -802,21 +805,33 @@ textarea {
   border-radius: 22px;
   padding: 28px;
   box-shadow: 0 18px 50px rgba(0,0,0,0.2);
+  min-height: 100%;
 }
 
 .tech-card h2 {
-  margin-bottom: 14px;
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
 }
 
 .tech-card p {
-  margin-bottom: 16px;
+  margin: 0 0 18px;
   color: #b7c2d3;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.tech-card .list-clean {
+  margin-top: 0;
+}
+
+.tech-card .list-clean li {
+  margin-bottom: 12px;
 }
 
 @media (max-width: 900px) {
   .tech-grid {
     grid-template-columns: 1fr;
   }
-}
 }
