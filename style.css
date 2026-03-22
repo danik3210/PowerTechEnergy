@@ -881,4 +881,16 @@ textarea {
   .nav a {
     font-size: 0.92rem;
   }
+
+  .project-content .list-clean {
+  margin-top: 12px;
+}
+
+.project-content .list-clean li {
+  margin-bottom: 10px;
+}
+
+.project-content .muted {
+  margin-bottom: 14px;
+}
 }
