@@ -787,4 +787,8 @@ textarea {
   .nav a {
     font-size: 0.92rem;
   }
+.eyebrow,
+.kicker {
+  display: none !important;
+}
 }
