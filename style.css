@@ -791,4 +791,31 @@ textarea {
 .kicker {
   display: none !important;
 }
+.tech-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.tech-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.2);
+}
+
+.tech-card h2 {
+  margin-bottom: 14px;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+}
+
+.tech-card p {
+  margin-bottom: 16px;
+  color: #b7c2d3;
+}
+
+@media (max-width: 900px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
 }
