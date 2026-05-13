@@ -923,3 +923,50 @@ textarea {
   margin-bottom: 14px;
 }
 }
+/* ===== FINAL OVERRIDES ===== */
+
+/* Partners page: text partner badges */
+.partner-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.partner-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted-strong);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Projects page list spacing */
+.project-content .list-clean {
+  margin-top: 12px;
+}
+
+.project-content .list-clean li {
+  margin-bottom: 10px;
+}
+
+.project-content .muted {
+  margin-bottom: 14px;
+}
+
+/* Partner page cleaner spacing */
+.partner-list + * {
+  margin-top: 24px;
+}
+
+@media (max-width: 720px) {
+  .partner-list span {
+    width: 100%;
+    justify-content: center;
+  }
+}
