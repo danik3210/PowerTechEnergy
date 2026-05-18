@@ -1,324 +1,733 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PowerTech Energy Ltd | Home</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerTech Pro | Engineering Technologies</title>
+    
+    <!-- Шрифти -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            200: '#e2e8f0',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                        }
+                    },
+                    letterSpacing: {
+                        tighter: '-0.025em',
+                        widest: '0.15em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body>
+<body class="antialiased">
 
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a href="index.html" class="logo">
-      <img src="public/images/logo.png" alt="PowerTech Energy logo" />
-      <span>PowerTech Energy Ltd</span>
-    </a>
+    <!-- Навігація -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" onclick="showPage('home', event)" class="flex items-center gap-3">
+                <img src="assets/powertech-logo.jpeg" alt="PowerTech Energy Ltd Logo" class="h-40 sm:h-36 w-auto mix-blend-multiply">
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-widest text-slate-900">
+                <a href="#home" onclick="showPage('home', event)" class="nav-link">Home</a>
+                <a href="#technologies" onclick="showPage('technologies', event)" class="nav-link">Technologies</a>
+                <a href="#projects" onclick="showPage('projects', event)" class="nav-link">Projects</a>
+                <a href="#partners" onclick="showPage('partners', event)" class="nav-link">Partners</a>
+                <a href="#impact" onclick="showPage('impact', event)" class="nav-link">Impact & Analytics</a>
+                <a href="#about" onclick="showPage('about', event)" class="nav-link">About</a>
+                <a href="#contact" onclick="showPage('contact', event)" class="btn-primary px-6 py-3 text-[10px]">Contact Us</a>
+            </div>
 
-    <nav class="nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="technologies.html">Technologies</a>
-      <a href="projects.html">Projects</a>
-      <a href="partners.html">Partners</a>
-      <a href="impact.html">Impact</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+            <button onclick="toggleMenu()" class="lg:hidden text-slate-900 focus:outline-none">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        
+        <!-- Мобільне меню -->
+        <div id="mobile-menu" class="fixed inset-0 bg-slate-50 z-40 transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col items-center justify-center space-y-8 text-sm font-bold uppercase tracking-widest">
+            <button onclick="toggleMenu()" class="absolute top-6 right-6 text-slate-900"><i data-lucide="x" class="w-8 h-8"></i></button>
+            <a href="#home" onclick="showPage('home', event)">Home</a>
+            <a href="#technologies" onclick="showPage('technologies', event)">Technologies</a>
+            <a href="#projects" onclick="showPage('projects', event)">Projects</a>
+            <a href="#partners" onclick="showPage('partners', event)">Partners</a>
+            <a href="#impact" onclick="showPage('impact', event)">Impact</a>
+            <a href="#about" onclick="showPage('about', event)">About</a>
+            <a href="#contact" onclick="showPage('contact', event)" class="btn-primary px-8 py-3">Contact Us</a>
+        </div>
     </nav>
 
-    <div class="header-cta">
-      <a class="btn btn-secondary" href="contact.html">Contact</a>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <section class="hero">
-    <div class="container hero-grid">
-
-      <div class="hero-copy">
-        <h1>Сlean-energy technologies for resilient infrastructure</h1>
-
-        <p class="lead">
-PowerTech Energy Ltd develops and coordinates clean-energy and energy-efficiency projects focused on low-carbon heating, thermal energy storage, decentralised energy systems, 
-          water treatment and resilient infrastructure deployment.
-        <p>  
-          We work at the intersection of technology development, pilot validation, grant-funded innovation, industrial partnerships and commercialisation pathways.
-        </p>
-
-        <div class="hero-actions">
-          <a href="technologies.html" class="btn btn-primary">Explore Technologies</a>
-          <a href="projects.html" class="btn btn-secondary">View Projects</a>
+    <!-- Головна секція (Home Page) -->
+    <section id="home" class="page-section relative min-h-screen flex items-center pt-20 bg-slate-50 overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.4] pointer-events-none" style="background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-slate-200 text-[10px] font-bold uppercase tracking-widest mb-6 rounded-sm shadow-sm">
+                    <div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+                    Clean Industrial Solutions
+                </div>
+                
+                <h1 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter text-slate-950 leading-[1.1] mb-8">
+                    Clean-energy technologies for <span class="text-amber-500 block">resilient infrastructure.</span>
+                </h1>
+                
+                <div class="text-lg md:text-xl text-slate-600 mb-10 max-w-xl font-medium space-y-6">
+                    <p>
+                        PowerTech Energy Ltd develops and coordinates clean-energy and energy-efficiency projects focused on low-carbon heating, thermal energy storage, decentralised energy systems, water treatment and resilient infrastructure deployment.
+                    </p>
+                    <p>
+                        We work at the intersection of technology development, pilot validation, grant-funded innovation, industrial partnerships and commercialisation pathways.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#technologies" onclick="showPage('technologies', event)" class="btn-primary px-10 py-4 font-bold uppercase text-[11px] tracking-widest flex items-center justify-center gap-2">
+                        Explore Technologies <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#projects" onclick="showPage('projects', event)" class="btn-outline px-10 py-4 font-bold uppercase text-[11px] tracking-widest text-center">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hidden lg:block relative reveal">
+                <div class="relative w-full aspect-square bg-slate-200 rounded-sm overflow-hidden border border-slate-200 group">
+                    <img src="assets/powertech-hero.jpeg" alt="Technological Infrastructure" class="w-full h-full object-cover  opacity-100 group-hover:grayscale-0 group-hover:opacity-100 transition duration-700">
+                    <div class="absolute inset-0 border-[16px] border-slate-50/50 mix-blend-overlay"></div>
+                    
+                    <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-4 border-l-4 border-amber-500 rounded-sm shadow-sm">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Readiness Level</p>
+                        <p class="text-2xl font-black text-slate-900 tracking-tighter">TRL 6</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="hero-visual">
-        <img src="public/images/hero.png" alt="Clean thermal infrastructure systems">
-        <div class="hero-badge">
-          <span>Applied clean-tech</span>
-          <span>•</span>
-          <span>Pilot validation</span>
-          <span>•</span>
-          <span>Commercialisation</span>
+    <!-- Секція Технологій (Technologies Page) -->
+    <section id="technologies" class="page-section hidden pt-32 pb-24 px-6 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 border-b border-slate-200 pb-10 reveal">
+                <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter text-slate-950 mb-6 leading-tight">Practical clean-energy and environmental technology pathways</h2>
+                <p class="text-slate-600 max-w-4xl text-lg leading-relaxed">
+                    PowerTech Energy focuses on applied clean-energy and environmental technology pathways with strong relevance for energy efficiency, infrastructure resilience, pilot validation and commercial deployment. Our work is structured around technologies that can support low-carbon heating, thermal flexibility, cleaner water purification, green hydrogen production, decentralised energy systems and resilient infrastructure across the UK, Ukraine and wider European markets.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Картка 1: Heat Pumps -->
+                <div class="bg-slate-50 p-8 md:p-10 border border-slate-200 rounded-sm shadow-sm relative tech-card group reveal">
+                    <i data-lucide="thermometer" class="w-8 h-8 text-amber-500 mb-6"></i>
+                    <h3 class="text-2xl font-black mb-3 uppercase tracking-tighter text-slate-900">Heat Pumps</h3>
+                    <h4 class="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest leading-relaxed">High-efficiency low-carbon heating systems, including R290-based heat pump pathways for retrofit, infrastructure and commercial heating applications.</h4>
+                    
+                    <div class="text-sm text-slate-600 space-y-4 mb-8">
+                        <p>PowerTech Energy is developing and coordinating heat pump technology pathways focused on efficient, lower-emission heating for buildings, infrastructure and commercial applications.</p>
+                        <p>Our work includes R290-based heat pump solutions designed to support retrofit-friendly deployment, improved thermal performance and future commercial readiness.</p>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-4 border-b border-slate-200 pb-2">Key focus areas:</p>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>R290 low-GWP refrigerant pathway</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>High-temperature heating applications</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Retrofit-friendly integration</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Remote monitoring and serviceability</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Reduced system losses</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot validation and certification pathway</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Commercial deployment readiness</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Картка 2: Thermal Energy Storage -->
+                <div class="bg-slate-50 p-8 md:p-10 border border-slate-200 rounded-sm shadow-sm relative tech-card group reveal" style="transition-delay: 100ms;">
+                    <i data-lucide="battery-charging" class="w-8 h-8 text-amber-500 mb-6"></i>
+                    <h3 class="text-2xl font-black mb-3 uppercase tracking-tighter text-slate-900">Thermal Energy Storage</h3>
+                    <h4 class="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest leading-relaxed">Thermal storage systems designed to improve heat flexibility, reduce energy losses and support the integration of renewable and low-carbon heat.</h4>
+                    
+                    <div class="text-sm text-slate-600 space-y-4 mb-8">
+                        <p>Thermal energy storage is a core direction for PowerTech Energy, supporting better use of heat, improved system flexibility and integration with renewable or low-carbon energy sources.</p>
+                        <p>Our work focuses on practical storage concepts that can help balance thermal demand, reduce energy losses and support resilient heat infrastructure.</p>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-4 border-b border-slate-200 pb-2">Key focus areas:</p>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Thermal storage and heat flexibility</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Load balancing across generation and end-use</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Integration with renewable and low-carbon heat</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Recycled and low-carbon material pathways</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Reduced heat losses</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot-scale validation</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Scalable deployment models</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Картка 3: Water Purification -->
+                <div class="bg-slate-50 p-8 md:p-10 border border-slate-200 rounded-sm shadow-sm relative tech-card group reveal">
+                    <i data-lucide="droplets" class="w-8 h-8 text-amber-500 mb-6"></i>
+                    <h3 class="text-2xl font-black mb-3 uppercase tracking-tighter text-slate-900">Water Purification</h3>
+                    <h4 class="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest leading-relaxed">Cleaner water purification pathways focused on reduced chemical dependency, environmental performance and resilient infrastructure relevance.</h4>
+                    
+                    <div class="text-sm text-slate-600 space-y-4 mb-8">
+                        <p>PowerTech Energy works with technology pathways connecting water purification, resource efficiency and green hydrogen production. This includes treatment and preparation of water streams for electrolysis, lower-chemical processing approaches and integration with decentralised clean-energy systems.</p>
+                        <p>This direction is relevant for infrastructure modernisation, industrial water treatment, energy recovery contexts and hydrogen production where water quality, energy efficiency and system reliability are critical.</p>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-4 border-b border-slate-200 pb-2">Key focus areas:</p>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Water purification and treatment</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Preparation of water for electrolysis</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Green hydrogen production pathways</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Reduced chemical dependency</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Environmental performance</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Resource recovery and reuse potential</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Integration with renewable electricity</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Utility, industrial and infrastructure applications</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot testing and validation</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Deployment in constrained or recovery-focused environments</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Картка 4: Decentralised Energy -->
+                <div class="bg-slate-50 p-8 md:p-10 border border-slate-200 rounded-sm shadow-sm relative tech-card group reveal" style="transition-delay: 100ms;">
+                    <i data-lucide="zap" class="w-8 h-8 text-amber-500 mb-6"></i>
+                    <h3 class="text-2xl font-black mb-3 uppercase tracking-tighter text-slate-900">Decentralised Energy & Resilient Infrastructure</h3>
+                    <h4 class="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest leading-relaxed">Integrated energy and infrastructure systems designed for local resilience, flexible deployment and recovery-focused applications in constrained environments.</h4>
+                    
+                    <div class="text-sm text-slate-600 space-y-4 mb-8">
+                        <p>PowerTech Energy develops and coordinates integrated clean-energy and infrastructure concepts that can support decentralised deployment, local resilience and recovery-focused applications.</p>
+                        <p>This includes project concepts connecting energy generation, energy storage, environmental systems, infrastructure modernisation and deployment partnerships.</p>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-4 border-b border-slate-200 pb-2">Key focus areas:</p>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Decentralised energy systems</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Energy-food-water nexus applications</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Infrastructure resilience</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Local deployment models</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Critical infrastructure support</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Ukraine recovery relevance</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>UK and European commercialisation pathways</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- Секція Проєктів (Projects Page) -->
+    <section id="projects" class="page-section hidden pt-32 pb-24 px-6 bg-slate-50 min-h-screen">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            <!-- Ліва колонка: Інтро та Підхід -->
+            <div class="lg:col-span-5 reveal">
+                <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter text-slate-950 mb-6 leading-tight">Applied project development for clean energy and resilient infrastructure</h2>
+                
+                <div class="text-lg text-slate-600 mb-10 space-y-4">
+                    <p>PowerTech Energy develops and coordinates applied clean-energy, energy-efficiency and resilient infrastructure initiatives with relevance for pilot validation, technology integration and commercial deployment.</p>
+                    <p>Our work focuses on practical project pathways where clean technologies can support low-carbon heating, thermal flexibility, water purification, green hydrogen readiness and energy-efficient infrastructure.</p>
+                </div>
+            </div>
 
-  <section class="credibility">
-    <div class="container credibility-grid">
+            <!-- Права колонка: Акордеони напрямків -->
+            <div class="lg:col-span-7 space-y-4 reveal" style="transition-delay: 200ms;">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-slate-200 pb-2">Project Directions</h3>
+                
+                <!-- Акордеон: Project Development Approach -->
+                <div class="border border-slate-200 bg-white rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-50 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">Project Development Approach</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-slate-50">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <p class="text-sm text-slate-600 mb-6 font-medium leading-relaxed border-t border-slate-200 pt-6">PowerTech Energy supports project development through a structured approach that combines technical coordination, partner engagement, pilot planning, grant-funded innovation management and commercialisation logic.</p>
+                                <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-slate-600">
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Project concept structuring</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Technical and commercial input coordination</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Delivery partner alignment</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot planning and validation support</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Commercialisation and market-readiness pathways</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      <article class="cred-card">
-        <span class="cred-number">01</span>
-        <h3>UK-based clean technology project developer</h3>
-        <p>Structured to develop, coordinate and commercialise clean-energy projects across the UK, 
-          Ukraine and wider European markets.</p>
-      </article>
+                <!-- Акордеон 1 -->
+                <div class="border border-slate-200 bg-white rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-50 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">Heat Pump Development Pathway</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-slate-50">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <p class="text-sm text-slate-600 mb-6 font-medium leading-relaxed border-t border-slate-200 pt-6">Development and commercialisation logic for high-efficiency heat pump systems designed for low-carbon heating, retrofit applications and resilient infrastructure use.</p>
+                                <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-slate-600">
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Low-carbon heating</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>High-efficiency heat pump systems</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Retrofit-friendly integration</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Low-GWP refrigerant pathways</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot validation</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Certification & market-readiness planning</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Commercial deployment logic</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      <article class="cred-card">
-        <span class="cred-number">02</span>
-        <h3>Pilot-oriented technology validation</h3>
-        <p>Focused on moving promising technologies from concept and engineering design 
-          towards pilot testing, operational validation and deployment readiness.</p>
-      </article>
+                <!-- Акордеон 2 -->
+                <div class="border border-slate-200 bg-white rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-50 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">Sustainable ThermoSolutions</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-slate-50">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <p class="text-sm text-slate-600 mb-6 font-medium leading-relaxed border-t border-slate-200 pt-6">An applied clean-energy project direction focused on thermal energy storage, water purification and integration pathways for resilient, low-carbon infrastructure.</p>
+                                <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-slate-600">
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Thermal energy storage</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Water purification</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Low-carbon infrastructure integration</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Industrial and environmental applications</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Green hydrogen readiness</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot validation and scalable deployment</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      <article class="cred-card">
-        <span class="cred-number">03</span>
-        <h3>Cross-border partnership model</h3>
-        <p>Working with research institutions, engineering teams, industrial partners 
-          and deployment stakeholders to build practical clean-tech pathways.</p>
-      </article>
+                <!-- Акордеон 3 -->
+                <div class="border border-slate-200 bg-white rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-50 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">UK Housing & Energy-Efficient Infrastructure Initiative</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-slate-50">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <p class="text-sm text-slate-600 mb-6 font-medium leading-relaxed border-t border-slate-200 pt-6">A UK-focused housing and infrastructure initiative exploring the use of underutilised land for energy-efficient, affordable and resilient homes.</p>
+                                <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-slate-600">
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Energy-efficient housing</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Affordable and accessible homes</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Use of underutilised land</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Clean heating and energy systems</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Low-carbon building design</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Public-sector and investment engagement</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      <article class="cred-card">
-        <span class="cred-number">04</span>
-        <h3>Energy efficiency and infrastructure resilience</h3>
-        <p>Positioned at the intersection of low-carbon heating, 
-          energy storage, water treatment, decentralised energy and resilient infrastructure.</p>
-      </article>
+                <!-- Акордеон 4 -->
+                <div class="border border-slate-200 bg-white rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-50 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">Additional Development Areas</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-slate-50">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <p class="text-sm text-slate-600 mb-6 font-medium leading-relaxed border-t border-slate-200 pt-6">Selected clean-tech and infrastructure opportunities are reviewed where they align with energy efficiency, decentralised systems, environmental technologies and resilient infrastructure.</p>
+                                <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-slate-600">
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Decentralised energy systems</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Energy storage and flexibility</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Environmental infrastructure</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Clean heat integration</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Green hydrogen readiness</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Resource efficiency</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Infrastructure resilience</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>Core technology directions</h2>
-
-      <p class="lead">
-        PowerTech Energy focuses on practical clean-energy and environmental technology pathways with 
-        clear relevance for energy efficiency, infrastructure resilience, pilot deployment and commercial scale-up.
-      </p>
-
-      <div class="grid-4 spacer-top">
-
-        <article class="card">
-          <h3>Heat Pumps</h3>
-          <p class="muted">
-            High-efficiency low-carbon heating systems, 
-            including R290-based heat pump pathways for retrofit, infrastructure and commercial heating applications.
-          </p>
-          <a class="card-link" href="technologies.html">Learn more</a>
-        </article>
-
-        <article class="card">
-          <h3>Thermal Energy Storage</h3>
-          <p class="muted">
-            Thermal storage systems designed to improve 
-            heat flexibility, reduce energy losses and support the integration of renewable and low-carbon heat.
-          </p>
-          <a class="card-link" href="technologies.html">Learn more</a>
-        </article>
-
-        <article class="card">
-          <h3>Water Treatment & Purification</h3>
-          <p class="muted">
-            Cleaner water treatment and purification pathways focused on 
-            reduced chemical dependency, environmental performance and infrastructure relevance.
-          </p>
-          <a class="card-link" href="technologies.html">Learn more</a>
-        </article>
-
-        <article class="card">
-          <h3>Decentralised Energy & Resilient Infrastructure</h3>
-          <p class="muted">
-            Integrated energy and infrastructure systems designed for local resilience, 
-            flexible deployment and recovery-focused applications in constrained environments.
-          </p>
-          <a class="card-link" href="technologies.html">Learn more</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>Applied projects with deployment relevance</h2>
-
-      <p class="lead">
-        Selected project themes focused on validation, pilot development
-        and scalable infrastructure pathways.
-      </p>
-
-      <div class="grid-3 spacer-top">
-
-        <article class="card project-card">
-          <img src="https://images.unsplash.com/photo-1548946447-79802ebb8311?q=80&w=1740&auto=format&fit=crop" alt="Thermal systems project" />
-          <div class="project-content">
-            <span class="meta">Heating & thermal systems</span>
-            <h3>Low-Carbon Heating & Heat Pump Platform</h3>
-            <p class="muted">
-              Development pathway for high-efficiency heating systems, including R290-based heat pump solutions for retrofit and resilient heating applications.
-            </p>
-            <a class="card-link" href="projects.html">View project themes</a>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <img src="https://images.unsplash.com/photo-1696850194981-e663a35df3bc?q=80&w=2064&auto=format&fit=crop" alt="Water systems project" />
-          <div class="project-content">
-            <span class="meta">Water & environmental systems</span>
-            <h3>Water Treatment & Environmental Systems</h3>
-            <p class="muted">
-              Technology validation pathway for cleaner water treatment, reduced reagent dependency and environmental infrastructure applications.
-            </p>
-            <a class="card-link" href="projects.html">View project themes</a>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <img src="https://images.unsplash.com/photo-1706013762559-c700379bdf09?q=80&w=1856&auto=format&fit=crop" alt="Infrastructure resilience project" />
-          <div class="project-content">
-            <span class="meta">Infrastructure resilience</span>
-            <h3>Thermal Energy Storage Integration</h3>
-            <p class="muted">
-              Scalable system logic connecting heat generation, storage, flexibility and infrastructure modernisation.
-            </p>
-            <a class="card-link" href="projects.html">View project themes</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section-sm">
-    <div class="container">
-      <h2>Developed through collaboration</h2>
-
-      <p class="lead">
-        PowerTech Energy works through a partnership-driven model, collaborating with research 
-        organisations, engineering teams, technology developers, industrial partners and deployment stakeholders across the UK, Ukraine and Europe.
-      </p>
-      Where appropriate, our work involves collaboration with organisations including IEGNAS, CENTR, Future Cycle Limited, 
-      Pulsar, Foton-SK, NCSD NGO, United-Ukraine, Eco+Logic, Wito and Ricos Group, Help Ukraine foundation, Ecomeistrai foundation etc.
-      </p>
-
-      <div class="logo-grid">
-        <div class="logo-box"><img src="public/images/partner-1.png" alt="Partner 1" /></div>
-        <div class="logo-box"><img src="public/images/partner-2.png" alt="Partner 2" /></div>
-        <div class="logo-box"><img src="public/images/partner-3.png" alt="Partner 3" /></div>
-        <div class="logo-box"><img src="public/images/partner-4.png" alt="Partner 4" /></div>
-        <div class="logo-box"><img src="public/images/partner-5.png" alt="Partner 5" /></div>
-      </div>
-
-      <div class="spacer-top">
-        <a href="partners.html" class="btn btn-secondary">Explore Partner Network</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>Impact areas linked to infrastructure performance</h2>
-
-      <p class="lead">
-        Focused on energy efficiency, environmental value, infrastructure resilience
-        and long-term system performance.
-      </p>
-
-      <div class="grid-4 spacer-top">
-
-        <article class="impact-card">
-          <h3>Energy efficiency</h3>
-          <p class="muted">Improving thermal performance, reducing system losses and 
-            supporting more efficient use of energy across buildings and infrastructure.</p>
-        </article>
-
-        <article class="impact-card">
-          <h3>Decarbonisation</h3>
-          <p class="muted">Supporting cleaner heat, lower-emission technologies and practical pathways for reducing dependence on fossil-fuel-based systems.</p>
-        </article>
-
-        <article class="impact-card">
-          <h3>Infrastructure resilience</h3>
-          <p class="muted">Helping modernise legacy systems and support decentralised, adaptable infrastructure in constrained or recovery-focused environments.</p>
-        </article>
-
-        <article class="impact-card">
-          <h3>Resource efficiency</h3>
-          <p class="muted">Improving the use of heat, water, materials and energy through integrated system design and cleaner technology pathways.</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-panel cta-panel-home">
-
-        <div class="cta-copy">
-          <h2>Partnership and pilot enquiries</h2>
-          <p>
-            We welcome discussions with research organisations, technology developers, 
-            industrial partners, infrastructure stakeholders, public-sector bodies and investors interested in clean-energy innovation, pilot deployment and commercialisation pathways.
-          </p>
+            </div>
         </div>
+    </section>
 
-        <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary">Contact Us</a>
-          <a href="about.html" class="btn btn-secondary">About the Company</a>
+    <!-- Секція Впливу (Impact Page) -->
+    <section id="impact" class="page-section hidden pt-32 pb-24 px-6 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 border-b border-slate-200 pb-8 reveal">
+                <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter text-slate-950 mb-6 leading-tight">Clean technologies with practical infrastructure value</h2>
+                <p class="text-slate-600 max-w-4xl text-lg leading-relaxed">
+                    PowerTech Energy focuses on project pathways that support energy efficiency, decarbonisation, infrastructure resilience and resource efficiency.
+                </p>
+            </div>
+            
+            <div class="mb-8 reveal">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 border-l-2 border-amber-500 pl-3">Impact pillars</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Energy efficiency -->
+                <div class="bg-slate-50 p-8 border border-slate-200 rounded-sm shadow-sm relative reveal">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                    <i data-lucide="zap" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-slate-900">Energy efficiency</h3>
+                    <p class="text-sm text-slate-700 mb-6 font-medium leading-relaxed">Improving the way heat, energy and infrastructure systems perform.</p>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Improved efficiency</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Decarbonisation pathway</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Reduced thermal losses</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Decarbonisation -->
+                <div class="bg-slate-50 p-8 border border-slate-200 rounded-sm shadow-sm relative reveal" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                    <i data-lucide="leaf" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-slate-900">Decarbonisation</h3>
+                    <p class="text-sm text-slate-700 mb-6 font-medium leading-relaxed">Supporting lower-carbon heating, storage and environmental technologies.</p>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Lower emissions</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Cleaner treatment approaches</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Resource optimisation</span></li>
+                    </ul>
+                </div>
+
+                <!-- Infrastructure resilience -->
+                <div class="bg-slate-50 p-8 border border-slate-200 rounded-sm shadow-sm relative reveal" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                    <i data-lucide="shield" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-slate-900">Infrastructure resilience</h3>
+                    <p class="text-sm text-slate-700 mb-6 font-medium leading-relaxed">Helping develop flexible and decentralised infrastructure solutions.</p>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Modernisation of legacy systems</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Adaptation for constrained environments</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Scalable deployment models</span></li>
+                    </ul>
+                </div>
+
+                <!-- Resource efficiency -->
+                <div class="bg-slate-50 p-8 border border-slate-200 rounded-sm shadow-sm relative reveal">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                    <i data-lucide="recycle" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-slate-900">Resource efficiency</h3>
+                    <p class="text-sm text-slate-700 mb-6 font-medium leading-relaxed">Improving the use of water, heat, materials and energy.</p>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>UK innovation pathway</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Ukraine recovery relevance</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>European transition context</span></li>
+                    </ul>
+                </div>
+
+                <!-- Green hydrogen readiness -->
+                <div class="bg-slate-50 p-8 border border-slate-200 rounded-sm shadow-sm relative reveal" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                    <i data-lucide="battery-charging" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-slate-900">Green hydrogen readiness</h3>
+                    <p class="text-sm text-slate-700 mb-6 font-medium leading-relaxed">Connecting water purification with future clean-energy production pathways.</p>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Improved efficiency</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Decarbonisation pathway</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Reduced thermal losses</span></li>
+                    </ul>
+                </div>
+
+                <!-- Ukraine recovery -->
+                <div class="bg-slate-50 p-8 border border-slate-200 rounded-sm shadow-sm relative reveal" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                    <i data-lucide="globe" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-slate-900">Ukraine recovery</h3>
+                    <p class="text-sm text-slate-700 mb-6 font-medium leading-relaxed">Supporting clean-energy and infrastructure modernisation relevant to Ukraine’s recovery.</p>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Improved efficiency</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Decarbonisation pathway</span></li>
+                        <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Reduced thermal losses</span></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <!-- Секція Партнерів (Partners Page) -->
+    <section id="partners" class="page-section hidden pt-32 pb-24 px-6 bg-slate-50 min-h-screen">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Текстовий блок: Інтро та Підхід -->
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter text-slate-950 mb-6 leading-tight">Partnership and collaboration network</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        Where appropriate, our work involves collaboration with selected research, technology, engineering, industrial and civil-society organisations.
+                    </p>
+                </div>
+                
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="bg-white p-8 md:p-10 border border-slate-200 rounded-sm shadow-sm relative">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                        <h3 class="text-xl font-black uppercase tracking-tighter text-slate-900 mb-4">Collaboration approach</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                            PowerTech Energy works through a practical collaboration model, connecting organisations that can support project structuring, technical validation, infrastructure deployment and market-readiness planning.
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-600 font-medium">
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Technology and project development</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot validation and deployment planning</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Research and engineering coordination</span></li>
+                            <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Stakeholder and partner alignment</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Блок списку партнерів -->
+            <div class="reveal" style="transition-delay: 200ms;">
+                <div class="text-center mb-12">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Wider collaboration network</h3>
+                    <p class="text-sm text-slate-500">Our wider collaboration network includes organisations such as:</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 md:gap-x-16 opacity-60 hover:opacity-100 transition-opacity duration-700">
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">IEGNAS</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">CENTR</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">FUTURE CYCLE LIMITED</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">PULSAR</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800 border-b-2 border-slate-300 pb-1">FOTON-SK</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">NCSD</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">UNITED UKRAINE</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">ECO+LOGIC</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">WITO</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-slate-800">RICOS GROUP</span>
+                    <span class="text-lg md:text-xl font-black tracking-tighter text-slate-800 text-center leading-none">HELP UKRAINE<br><span class="text-[10px] tracking-widest text-slate-400 font-bold uppercase">Foundation</span></span>
+                    <span class="text-lg md:text-xl font-black tracking-tighter text-slate-800 text-center leading-none">ECOMEISTRAI<br><span class="text-[10px] tracking-widest text-slate-400 font-bold uppercase">Foundation</span></span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Секція Про Компанію (About Page) -->
+    <section id="about" class="page-section hidden pt-32 pb-24 px-6 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            <!-- Ліва колонка: Інтро -->
+            <div class="lg:col-span-5 reveal">
+                <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter text-slate-950 mb-6 leading-tight">Clean technology project development across the UK, Ukraine and Europe</h2>
+                
+                <div class="text-lg text-slate-600 mb-8 space-y-4">
+                    <p>PowerTech Energy Ltd is a UK-based clean technology project development company focused on energy efficiency, low-carbon heating, thermal energy storage, water purification and resilient infrastructure.</p>
+                    <p>We work at the intersection of technology development, project structuring, partner coordination, pilot validation and commercialisation planning.</p>
+                </div>
+                
+                <ul class="space-y-3 text-sm text-slate-600 font-medium">
+                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Technology-led project development</span></li>
+                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>UK-Europe-Ukraine deployment pathways</span></li>
+                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Partner and stakeholder coordination</span></li>
+                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot validation and market readiness</span></li>
+                </ul>
+            </div>
+
+            <!-- Права колонка: Акордеони -->
+            <div class="lg:col-span-7 space-y-4 reveal" style="transition-delay: 200ms;">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-slate-200 pb-2">Company Details</h3>
+                
+                <!-- Акордеон 1: What we do -->
+                <div class="border border-slate-200 bg-slate-50 rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-100 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">What we do</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-white">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-slate-600 border-t border-slate-200 pt-6">
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Project concept development</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Technology and market assessment</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Technical coordination</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Partner and stakeholder engagement</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Pilot validation planning</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Grant-funded innovation support</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Commercialisation & market-entry planning</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Акордеон 2: Focus areas -->
+                <div class="border border-slate-200 bg-slate-50 rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-100 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">Focus areas</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-white">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-slate-600 border-t border-slate-200 pt-6">
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Heat pumps and low-carbon heating</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Thermal energy storage</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Water purification</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Green hydrogen readiness</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Energy-efficient infrastructure</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>Decentralised energy systems</span></li>
+                                    <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-sm bg-amber-500 mt-1.5 shrink-0"></div><span>UK-Europe-Ukraine deployment pathways</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Акордеон 3: Leadership -->
+                <div class="border border-slate-200 bg-slate-50 rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-100 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">Leadership</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-white">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <div class="text-sm text-slate-600 space-y-4 border-t border-slate-200 pt-6">
+                                    <p>PowerTech Energy is led by <strong>Oleksii Martyniuk</strong>, an investment and project development professional with more than 20 years of experience in investment management, operational restructuring, due diligence, financial analysis, project coordination and cross-border business development.</p>
+                                    <p>His work focuses on clean technology, energy efficiency, infrastructure resilience, grant-funded innovation and commercialisation pathways connecting the UK, Ukraine and wider European markets.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Акордеон 4: How we work -->
+                <div class="border border-slate-200 bg-slate-50 rounded-sm shadow-sm overflow-hidden">
+                    <button class="accordion-btn w-full text-left px-6 py-6 flex justify-between items-center focus:outline-none hover:bg-slate-100 transition-colors">
+                        <h4 class="text-lg font-black uppercase tracking-tighter text-slate-900 pr-4">How we work</h4>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out bg-white">
+                        <div class="overflow-hidden">
+                            <div class="px-6 pb-8 pt-2">
+                                <div class="text-sm text-slate-600 space-y-4 border-t border-slate-200 pt-6">
+                                    <p>PowerTech Energy works through a collaboration-driven model, connecting research organisations, engineering teams, technology developers, industrial partners and deployment stakeholders.</p>
+                                    <p>Our role is to help structure credible clean-tech projects, align technical and commercial objectives and support practical pathways towards pilot validation and market readiness.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Секція Контактів (Contact Page) -->
+    <section id="contact" class="page-section hidden pt-32 pb-24 px-6 bg-slate-50 min-h-screen">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-950 mb-4">Contact Us</h2>
+                <p class="text-slate-600 text-lg">Interested in partnership, pilot collaboration, or strategic infrastructure deployment?</p>
+            </div>
+            
+            <div class="bg-white p-12 md:p-16 border border-slate-200 rounded-sm shadow-sm reveal flex flex-col items-center justify-center text-center">
+                <div class="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mb-6">
+                    <i data-lucide="mail" class="w-8 h-8 text-amber-500"></i>
+                </div>
+                <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Email Us</h3>
+                <a href="mailto:info@techenergy.uk" class="text-2xl md:text-4xl font-black tracking-tighter text-slate-900 hover:text-amber-500 transition-colors">info@techenergy.uk</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-slate-950 text-slate-200 pt-24 pb-12 px-6 border-t border-amber-500">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 mb-16">
+            <div>
+                <h2 class="text-4xl font-black uppercase tracking-tighter text-white mb-6">Strategic Partnership</h2>
+                <p class="text-slate-400 max-w-md mb-8">
+                    We are open to dialogue with engineering teams, investors, and municipalities regarding pilot deployments and system integration.
+                </p>
+                <a href="#contact" onclick="showPage('contact', event)" class="btn-primary inline-flex items-center gap-2 px-8 py-4 font-bold uppercase text-[11px] tracking-widest">
+                    <i data-lucide="mail" class="w-4 h-4"></i> Get in Touch
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-4">Navigation</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#technologies" onclick="showPage('technologies', event)" class="hover:text-amber-500 transition">Technologies</a></li>
+                        <li><a href="#projects" onclick="showPage('projects', event)" class="hover:text-amber-500 transition">Projects</a></li>
+                        <li><a href="#partners" onclick="showPage('partners', event)" class="hover:text-amber-500 transition">Partners</a></li>
+                        <li><a href="#impact" onclick="showPage('impact', event)" class="hover:text-amber-500 transition">Impact</a></li>
+                        <li><a href="#about" onclick="showPage('about', event)" class="hover:text-amber-500 transition">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm font-medium text-slate-400">
+                        <li>info@techenergy.uk</li>
+                        <li>United Kingdom</li>
+                        <li class="mt-4 text-[10px] uppercase tracking-widest">Company registered in the UK</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-600 border-t border-slate-800 pt-8">
+            <p>© 2026 PowerTech Energy Ltd.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <span>Clean Industrial Tech</span>
+                <span class="text-amber-500">UK-Ukraine Collaboration</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Вгору" -->
+    <button id="backToTop" class="fixed bottom-6 right-6 p-3 bg-amber-500 text-slate-950 rounded-sm shadow-lg z-50 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none hover:bg-amber-600 focus:outline-none" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="fixed bottom-0 left-0 w-full bg-slate-950 border-t border-slate-800 text-slate-200 p-4 md:p-6 z-[60] flex flex-col md:flex-row justify-between items-center gap-6 transition-transform duration-500 translate-y-full">
+        <div class="text-sm">
+            <h4 class="font-bold text-white mb-1 uppercase tracking-widest text-[10px]">Cookie Policy</h4>
+            <p class="text-slate-400">We use cookies to ensure you get the best experience on our website, in compliance with UK regulations. <a href="#" class="text-amber-500 underline hover:text-amber-400">Learn more</a>.</p>
+        </div>
+        <div class="flex gap-4 shrink-0 w-full md:w-auto">
+            <button onclick="acceptCookies()" class="btn-primary px-6 py-2 text-[11px] font-bold uppercase tracking-widest flex-1 md:flex-none text-center rounded-sm">Accept</button>
+            <button onclick="declineCookies()" class="border border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white rounded-sm px-6 py-2 text-[11px] font-bold uppercase tracking-widest flex-1 md:flex-none text-center transition-colors">Decline</button>
+        </div>
     </div>
-  </section>
 
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-
-    <div>
-      <a href="index.html" class="logo">
-        <img src="public/images/logo.png" alt="PowerTech Energy logo" />
-        <span>PowerTech Energy Ltd</span>
-      </a>
-      <p class="small spacer-top">
-        UK-based clean technology company developing and coordinating clean-energy, energy-efficiency and resilient infrastructure projects across the UK, Ukraine and Europe.
-      </p>
-    </div>
-
-    <div>
-      <h3>Quick Links</h3>
-      <div class="footer-nav small">
-        <a href="technologies.html">Technologies</a>
-        <a href="projects.html">Projects</a>
-        <a href="partners.html">Partners</a>
-        <a href="impact.html">Impact</a>
-      </div>
-    </div>
-
-    <div>
-      <h3>Contact</h3>
-      <p class="small">info@techenergy.uk</p>
-      <p class="small">United Kingdom</p>
-      <p class="small">© 2026 PowerTech Energy Ltd</p>
-    </div>
-
-  </div>
-</footer>
+    <!-- Скрипти -->
+    <script src="script.js"></script>
 
 </body>
 </html>
